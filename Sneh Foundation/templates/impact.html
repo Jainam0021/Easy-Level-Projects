@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Impact | Sneh Foundation</title>
+    <link rel="stylesheet" href="../static/CSS/volunteer.css">
+    <link rel="stylesheet" href="../static/CSS/impact.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <h2>Sneh Foundation</h2>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="../index.html" class="nav-link">Home</a></li>
+                <li><a href="impact.html" class="nav-link active">Our Impact</a></li>
+                <li><a href="../index.html#stories" class="nav-link">Stories</a></li>
+                <li><a href="../index.html#projects" class="nav-link">Projects</a></li>
+                <li><a href="../index.html#transparency" class="nav-link">Transparency</a></li>
+                <li><a href="../volunteer.html" class="nav-link">Volunteer</a></li>
+                <li><a href="../index.html#contact" class="nav-link">Contact</a></li>
+            </ul>
+            <div class="nav-toggle">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <header class="impact-header">
+      <h1>Our Impact</h1>
+      <p>Together, we are transforming lives and building a better tomorrow.</p>
+    </header>
+
+    <section class="stats-section" data-aos="fade-up">
+      <div class="stat-card">
+        <h2>2,500+</h2>
+        <p>Lives Impacted</p>
+      </div>
+      <div class="stat-card">
+        <h2>150+</h2>
+        <p>Volunteers</p>
+      </div>
+      <div class="stat-card">
+        <h2>85</h2>
+        <p>Projects Completed</p>
+      </div>
+      <div class="stat-card">
+        <h2>₹10L+</h2>
+        <p>Funds Raised</p>
+      </div>
+    </section>
+    <section class="chart-section" data-aos="fade-up">
+      <h2>Impact Growth Over Years</h2>
+      <canvas id="impactChart" width="400" height="200"></canvas>
+    </section>
+
+    <section class="stories-section" data-aos="fade-right">
+      <h2>Real Stories, Real Change</h2>
+      <div class="story-cards">
+        <div class="story-card">
+          <h3>Ravi’s Journey to School</h3>
+          <p>
+            Through our education drive, Ravi, once a dropout, now attends
+            school regularly and dreams of becoming a teacher.
+          </p>
+        </div>
+        <div class="story-card">
+          <h3>Saving Lives with Health Camps</h3>
+          <p>
+            Our medical volunteers conducted 20+ free health camps in rural
+            areas, helping 1000+ villagers with basic healthcare access.
+          </p>
+        </div>
+        <div class="story-card">
+          <h3>Women Empowerment Workshops</h3>
+          <p>
+            We trained over 300 women in tailoring, digital literacy, and small
+            business to empower them towards self-reliance.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="project-list-section">
+      <h2>Past Projects</h2>
+      <input
+        type="text"
+        id="projectSearch"
+        placeholder="Search by name, location, or category..."
+      />
+
+      <div id="projectList" class="project-cards">
+        <div class="project-card">
+          <h3>School Kit Distribution</h3>
+          <p><strong>Location:</strong> Surat</p>
+          <p><strong>Category:</strong> Education</p>
+        </div>
+        <div
+          class="project-card"
+          data-title="School Kit Distribution"
+          data-location="Surat"
+          data-category="Education"
+          data-description="We distributed over 500 school kits to underprivileged children across Surat."
+          onclick="openModal(this)"
+        >
+          <h3>School Kit Distribution</h3>
+          <p><strong>Location:</strong> Surat</p>
+          <p><strong>Category:</strong> Education</p>
+        </div>
+
+        <div
+          class="project-card"
+          data-title="Flood Relief Drive"
+          data-location="Vadodara"
+          data-category="Disaster Relief"
+          data-description="Emergency relief kits, water, and medicines were delivered to flood-affected families in Vadodara."
+          onclick="openModal(this)"
+        >
+          <h3>Flood Relief Drive</h3>
+          <p><strong>Location:</strong> Vadodara</p>
+          <p><strong>Category:</strong> Disaster Relief</p>
+        </div>
+
+        <!-- Add similar for other projects -->
+
+        <div class="project-card">
+          <h3>Blood Donation Camp</h3>
+          <p><strong>Location:</strong> Ahmedabad</p>
+          <p><strong>Category:</strong> Health</p>
+        </div>
+        <div class="project-card">
+          <h3>Food for All Program</h3>
+          <p><strong>Location:</strong> Rajkot</p>
+          <p><strong>Category:</strong> Hunger Relief</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Sneh Foundation</h3>
+                    <p>Creating lasting impact through education, healthcare, and community empowerment.</p>
+                    <div class="footer-social">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="../index.html">Home</a></li>
+                        <li><a href="impact.html">Our Impact</a></li>
+                        <li><a href="../index.html#stories">Stories</a></li>
+                        <li><a href="../index.html#projects">Projects</a></li>
+                        <li><a href="../volunteer.html">Volunteer</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact Info</h4>
+                    <div class="contact-info">
+                        <p><i class="fas fa-map-marker-alt"></i> Ahmedabad, Gujarat, India</p>
+                        <p><i class="fas fa-phone"></i> +91 98765 43210</p>
+                        <p><i class="fas fa-envelope"></i> info@snehfoundation.org</p>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Newsletter</h4>
+                    <p>Subscribe to get updates on our impact and stories.</p>
+                    <form class="footer-newsletter">
+                        <input type="email" placeholder="Your email">
+                        <button type="submit"><i class="fas fa-paper-plane"></i></button>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Sneh Foundation. All rights reserved. | Privacy Policy | Terms of Service</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Floating Button -->
+    <div class="whatsapp-float">
+        <a href="https://wa.me/919876543210?text=Hello%2C%20I%20would%20love%20to%20volunteer%20with%20Sneh%20Foundation.%20Please%20guide%20me%20with%20the%20next%20steps." target="_blank">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+        <div class="whatsapp-tooltip">Chat with us!</div>
+    </div>
+
+    <script>
+      const projectSearch = document.getElementById("projectSearch");
+      const projectCards = document.querySelectorAll(".project-card");
+
+      projectSearch.addEventListener("keyup", function () {
+        const term = this.value.toLowerCase();
+        projectCards.forEach((card) => {
+          const name = card.querySelector("h3").textContent.toLowerCase();
+          const location = card
+            .querySelector("p:nth-child(2)")
+            .textContent.toLowerCase();
+          const category = card
+            .querySelector("p:nth-child(3)")
+            .textContent.toLowerCase();
+
+          if (
+            name.includes(term) ||
+            location.includes(term) ||
+            category.includes(term)
+          ) {
+            card.style.display = "block";
+          } else {
+            card.style.display = "none";
+          }
+        });
+      });
+    </script>
+    <script>
+      function openModal(card) {
+        document.getElementById("modalTitle").innerText = card.dataset.title;
+        document.getElementById("modalLocation").innerText =
+          card.dataset.location;
+        document.getElementById("modalCategory").innerText =
+          card.dataset.category;
+        document.getElementById("modalDescription").innerText =
+          card.dataset.description;
+        document.getElementById("projectModal").style.display = "block";
+      }
+
+      function closeModal() {
+        document.getElementById("projectModal").style.display = "none";
+      }
+
+      // Close modal if clicked outside content
+      window.onclick = function (event) {
+        const modal = document.getElementById("projectModal");
+        if (event.target === modal) {
+          modal.style.display = "none";
+        }
+      };
+    </script>
+
+    <script>
+      // Initialize AOS
+      AOS.init({
+        duration: 1000,
+        once: true,
+      });
+
+      // Mobile Navigation Toggle
+      const navToggle = document.querySelector('.nav-toggle');
+      const navMenu = document.querySelector('.nav-menu');
+      
+      if (navToggle && navMenu) {
+        navToggle.addEventListener('click', () => {
+          navMenu.classList.toggle('active');
+          navToggle.classList.toggle('active');
+        });
+        
+        // Close menu when clicking on a link
+        document.querySelectorAll('.nav-link').forEach(link => {
+          link.addEventListener('click', () => {
+            navMenu.classList.remove('active');
+            navToggle.classList.remove('active');
+          });
+        });
+      }
+
+      // Footer Newsletter Form
+      const footerNewsletter = document.querySelector('.footer-newsletter');
+      if (footerNewsletter) {
+        footerNewsletter.addEventListener('submit', function(e) {
+          e.preventDefault();
+          const email = this.querySelector('input[type="email"]').value;
+          
+          const button = this.querySelector('button');
+          const originalHTML = button.innerHTML;
+          button.innerHTML = '<i class="fas fa-spinner fa-spin"></i>';
+          button.disabled = true;
+          
+          setTimeout(() => {
+            button.innerHTML = '<i class="fas fa-check"></i>';
+            button.style.background = '#27ae60';
+            
+            setTimeout(() => {
+              button.innerHTML = originalHTML;
+              button.disabled = false;
+              button.style.background = '';
+              this.reset();
+            }, 2000);
+          }, 1000);
+        });
+      }
+
+      // Chart.js - Impact Growth Chart
+      const ctx = document.getElementById("impactChart").getContext("2d");
+      const impactChart = new Chart(ctx, {
+        type: "line",
+        data: {
+          labels: ["2020", "2021", "2022", "2023", "2024"],
+          datasets: [
+            {
+              label: "Lives Impacted",
+              data: [400, 900, 1500, 2100, 2500],
+              borderColor: "#5a3e2b",
+              backgroundColor: "rgba(90, 62, 43, 0.2)",
+              tension: 0.3,
+              fill: true,
+            },
+            {
+              label: "Volunteers",
+              data: [25, 50, 80, 110, 150],
+              borderColor: "#9c5b20",
+              backgroundColor: "rgba(156, 91, 32, 0.2)",
+              tension: 0.3,
+              fill: true,
+            },
+          ],
+        },
+        options: {
+          responsive: true,
+          plugins: {
+            legend: {
+              labels: {
+                color: "#333",
+              },
+            },
+          },
+          scales: {
+            y: {
+              ticks: {
+                color: "#333",
+              },
+            },
+            x: {
+              ticks: {
+                color: "#333",
+              },
+            },
+          },
+        },
+      });
+    </script>
+    <!-- Project Details Modal -->
+    <div id="projectModal" class="modal">
+      <div class="modal-content">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <h2 id="modalTitle"></h2>
+        <p><strong>Location:</strong> <span id="modalLocation"></span></p>
+        <p><strong>Category:</strong> <span id="modalCategory"></span></p>
+        <p id="modalDescription"></p>
+      </div>
+    </div>
+  </body>
+</html>

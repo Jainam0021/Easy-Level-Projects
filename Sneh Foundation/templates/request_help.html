@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Need Help? We're Here for You</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <style>
+        /* Sneh Foundation Theming */
+        :root {
+            --sneh-primary: #e06c5e;
+            --sneh-secondary: #0b1a2a;
+            --sneh-accent: #f5f5f5;
+            --sneh-text-dark: #333;
+            --sneh-text-light: #f8f9fa;
+            --sneh-dark-blue: #232d3a;
+            --sneh-footer-bg: #212c38;
+            --sneh-yellow: #ffc107;
+            --sneh-phone: #28a745;
+            --sneh-whatsapp: #25d366;
+            --sneh-live-chat: #17a2b8;
+        }
+
+        /* General & Body */
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--sneh-accent);
+            color: var(--sneh-text-dark);
+        }
+
+        h1, h2, h3 {
+            font-weight: 600;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        /* --- HEADER SECTION --- */
+        .header {
+            background-color: white;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .header-logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--sneh-secondary);
+        }
+
+        .header-logo img {
+            width: 40px;
+            height: auto;
+        }
+        
+        .header-nav {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .header-nav a {
+            font-weight: 600;
+            position: relative;
+            transition: color 0.3s;
+        }
+        
+        .header-nav a:hover {
+            color: var(--sneh-primary);
+        }
+
+        .donate-btn {
+            background-color: var(--sneh-primary);
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 20px;
+            font-weight: 600;
+            transition: background-color 0.3s;
+        }
+
+        .donate-btn:hover {
+            background-color: #c95c52;
+        }
+
+        /* --- HERO SECTION --- */
+        .hero-section {
+            background-color: var(--sneh-primary);
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+            animation: fadeIn 1s ease-out;
+        }
+
+        .hero-section h1 {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .hero-section p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* --- MAIN CONTENT & FORM --- */
+        .main-content {
+            max-width: 1000px;
+            margin: -50px auto 2rem;
+            padding: 2rem;
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            position: relative;
+            z-index: 10;
+        }
+
+        .form-container {
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .form-section {
+            flex: 2;
+            min-width: 300px;
+        }
+        
+        .support-info-section {
+            flex: 1;
+            min-width: 250px;
+            padding: 1rem;
+            background-color: var(--sneh-accent);
+            border-radius: 8px;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--sneh-secondary);
+        }
+        
+        input, textarea, select {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            box-sizing: border-box;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+        
+        input:focus, textarea:focus, select:focus {
+            outline: none;
+            border-color: var(--sneh-primary);
+            box-shadow: 0 0 0 3px rgba(224, 108, 94, 0.2);
+        }
+
+        .validation-message {
+            font-size: 0.8rem;
+            color: var(--sneh-primary);
+            margin-top: 0.25rem;
+        }
+
+        .priority-group .radio-options {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .priority-group label {
+            font-weight: 400;
+            color: var(--sneh-text-dark);
+        }
+        
+        .response-time {
+            font-size: 0.9rem;
+            color: var(--sneh-secondary);
+            opacity: 0.8;
+            margin-top: 0.5rem;
+        }
+
+        .submit-btn {
+            background-color: var(--sneh-primary);
+            color: white;
+            padding: 0.75rem 2rem;
+            border: none;
+            border-radius: 6px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s;
+            font-weight: 600;
+        }
+
+        .submit-btn:hover {
+            background-color: #c95c52;
+            transform: translateY(-2px);
+        }
+
+        .thank-you-message {
+            text-align: center;
+            animation: fadeIn 1s ease-out;
+            color: var(--sneh-secondary);
+        }
+
+        /* --- SUPPORT & CONTACT --- */
+        .contact-options {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .contact-btn {
+            padding: 0.75rem 1.5rem;
+            border-radius: 6px;
+            text-decoration: none;
+            color: white;
+            font-weight: 600;
+            transition: transform 0.2s, box-shadow 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        
+        .contact-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .phone { background-color: var(--sneh-phone); }
+        .whatsapp { background-color: var(--sneh-whatsapp); }
+        .live-chat { background-color: var(--sneh-live-chat); }
+
+        .faq-section {
+            margin-top: 2rem;
+        }
+
+        .accordion-item {
+            border-bottom: 1px solid #ddd;
+        }
+
+        .accordion-header {
+            width: 100%;
+            background: transparent;
+            color: var(--sneh-text-dark);
+            border: none;
+            text-align: left;
+            padding: 1rem 0;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: color 0.3s;
+        }
+        
+        .accordion-header:hover {
+            color: var(--sneh-primary);
+        }
+
+        .accordion-header i {
+            transition: transform 0.3s;
+        }
+        
+        .accordion-item.active .accordion-header i {
+            transform: rotate(180deg);
+        }
+
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+        
+        .accordion-content p {
+            padding-bottom: 1rem;
+        }
+
+        .accordion-item.active .accordion-content {
+            max-height: 200px;
+        }
+
+        .emergency-support {
+            margin-top: 2rem;
+            background-color: rgba(220, 53, 69, 0.1);
+            color: #dc3545;
+            padding: 1rem;
+            border-radius: 8px;
+            border: 1px solid #dc3545;
+        }
+
+        /* --- CTA SECTION --- */
+        .cta-section {
+            text-align: center;
+            margin-top: 2rem;
+            padding: 2rem;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+        
+        .cta-btn {
+            padding: 0.75rem 2rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: transform 0.2s, background-color 0.3s;
+        }
+
+        .donate {
+            background-color: var(--sneh-primary);
+            color: white;
+        }
+        
+        .donate:hover {
+            background-color: #c95c52;
+        }
+
+        .volunteer {
+            background-color: var(--sneh-secondary);
+            color: white;
+        }
+        
+        .volunteer:hover {
+            background-color: #0d2238;
+        }
+        
+        /* --- FOOTER SECTION --- */
+        footer {
+            background-color: var(--sneh-footer-bg);
+            color: var(--sneh-text-light);
+            padding: 3rem 2rem 1rem;
+            text-align: left;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .footer-column {
+            flex-basis: 25%;
+            min-width: 200px;
+        }
+
+        .footer-column h3 {
+            color: var(--sneh-primary);
+            margin-bottom: 1.5rem;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 0.75rem;
+        }
+        
+        .footer-column a {
+            transition: color 0.3s;
+        }
+        
+        .footer-column a:hover {
+            color: var(--sneh-primary);
+        }
+
+        .footer-socials a {
+            font-size: 1.5rem;
+            margin-right: 1rem;
+            transition: color 0.3s;
+        }
+        
+        .footer-socials a:hover {
+            color: var(--sneh-primary);
+        }
+        
+        .contact-info p {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .copyright {
+            text-align: center;
+            border-top: 1px solid #444;
+            margin-top: 2rem;
+            padding-top: 1rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header-nav {
+                display: none;
+            }
+            .header {
+                justify-content: center;
+            }
+            .hero-section h1 {
+                font-size: 2.5rem;
+            }
+            .form-container {
+                flex-direction: column;
+            }
+            .footer-content {
+                flex-direction: column;
+            }
+            .footer-column {
+                min-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <a href="#" class="header-logo">
+            <img src="../static/images/Logo.png" alt="Sneh Foundation Logo" />
+            <span>Sneh Foundation</span>
+        </a>
+        <nav class="header-nav">
+            <a href="#">Home</a>
+            <a href="#">About</a>
+            <a href="#">Programs</a>
+            <a href="#">Impact</a>
+            <a href="#">Request Help</a>
+            <a href="#">Contact</a>
+            <a href="#" class="donate-btn">Donate</a>
+        </nav>
+    </header>
+
+    <section class="hero-section">
+        <h1>Need Help? We're Here for You</h1>
+        <p>Submit your request and our team will assist you promptly.</p>
+    </section>
+
+    <main class="main-content">
+        <div class="form-container">
+            <section class="form-section">
+                <h2>Help Request Form</h2>
+                <form id="help-form" class="help-form">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" name="name" required />
+                        <span class="validation-message" id="name-error"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required />
+                        <span class="validation-message" id="email-error"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone Number (Optional)</label>
+                        <input type="tel" id="phone" name="phone" />
+                    </div>
+                    <div class="form-group">
+                        <label for="category">Category of Request</label>
+                        <select id="category" name="category" required>
+                            <option value="">Select a category</option>
+                            <option value="General">General</option>
+                            <option value="Technical">Technical</option>
+                            <option value="Billing">Billing</option>
+                            <option value="Volunteer">Volunteer</option>
+                            <option value="Donation">Donation</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+                    <div class="form-group priority-group">
+                        <label>Priority</label>
+                        <div class="radio-options">
+                            <input type="radio" id="low-priority" name="priority" value="Low" checked />
+                            <label for="low-priority">Low</label>
+                            <input type="radio" id="medium-priority" name="priority" value="Medium" />
+                            <label for="medium-priority">Medium</label>
+                            <input type="radio" id="high-priority" name="priority" value="High" />
+                            <label for="high-priority">High</label>
+                        </div>
+                        <p class="response-time" id="estimated-time">Estimated response time: 2-3 business days</p>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message / Description</label>
+                        <textarea id="message" name="message" rows="5" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="upload">Upload Document / Screenshot (Max 5MB)</label>
+                        <input type="file" id="upload" name="upload" />
+                    </div>
+                    <button type="submit" class="submit-btn">Submit Request</button>
+                </form>
+
+                <div id="thank-you-message" class="thank-you-message" style="display: none;">
+                    <h3>Thank You!</h3>
+                    <p>Your request has been submitted successfully.</p>
+                    <p>Your Ticket ID is: <strong id="ticket-id"></strong></p>
+                    <p>We will get back to you as soon as possible.</p>
+                </div>
+            </section>
+
+            <section class="support-info-section">
+                <h2>Support Information</h2>
+                <div class="contact-options">
+                    <a href="tel:+919875147657" class="contact-btn phone">
+                        <i class="fas fa-phone"></i> Call Us
+                    </a>
+                    <a href="https://wa.me/9875147657?text=I%20need%20help%20regarding..." class="contact-btn whatsapp">
+                        <i class="fab fa-whatsapp"></i> WhatsApp Chat
+                    </a>
+                    <a href="#" class="contact-btn live-chat">
+                        <i class="fas fa-comment-dots"></i> Live Chat
+                    </a>
+                </div>
+
+                <div class="faq-section">
+                    <h3>Common Questions</h3>
+                    <div class="accordion">
+                        <div class="accordion-item">
+                            <button class="accordion-header">
+                                How do I get involved?
+                                <i class="fas fa-chevron-down"></i>
+                            </button>
+                            <div class="accordion-content">
+                                <p>You can get involved by visiting our "Volunteer" or "Donate" pages to see how you can help our mission. Every bit of support makes a difference!</p>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <button class="accordion-header">
+                                What are your support hours?
+                                <i class="fas fa-chevron-down"></i>
+                            </button>
+                            <div class="accordion-content">
+                                <p>Our support team is available from 9 AM to 5 PM, Monday to Friday.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="emergency-support">
+                    <h3>Emergency Support</h3>
+                    <p>For urgent matters, please call our 24/7 hotline at <a href="tel:+919875147657"> +91 9875147657</a>.</p>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <a href="#" class="header-logo">
+                    <img src="../static/images/Logo.png" alt="Sneh Foundation Logo" />
+                    <span>Sneh Foundation</span>
+                </a>
+                <p>Spreading love, hope, and compassion to create a better world for all. Together, we can make a difference.</p>
+                <div class="footer-socials">
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Our Programs</a></li>
+                    <li><a href="#">Impact</a></li>
+                    <li><a href="#">Success Stories</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Get Involved</h3>
+                <ul>
+                    <li><a href="#">Donate</a></li>
+                    <li><a href="#">Volunteer</a></li>
+                    <li><a href="#">Partner With Us</a></li>
+                    <li><a href="#">Corporate Sponsorship</a></li>
+                </ul>
+            </div>
+            <div class="footer-column contact-info">
+                <h3>Contact Info</h3>
+                <p><i class="fas fa-map-marker-alt"></i> Kalasagar Heights, New Ranip</p>
+                <p><i class="fas fa-phone"></i> +91 9875147657</p>
+                <p><i class="fas fa-envelope"></i> snehfoundation@gmail.com</p>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>&copy; 2025 Sneh Foundation. All rights reserved. Built with ❤️ for humanity.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const form = document.getElementById("help-form");
+            const nameInput = document.getElementById("name");
+            const emailInput = document.getElementById("email");
+            const messageInput = document.getElementById("message");
+            const thankYouMessage = document.getElementById("thank-you-message");
+            const ticketIdElement = document.getElementById("ticket-id");
+            const priorityRadios = document.querySelectorAll('input[name="priority"]');
+            const estimatedTime = document.getElementById("estimated-time");
+            const accordions = document.querySelectorAll(".accordion-header");
+
+            // Real-time Form Validation
+            function validateEmail() {
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!emailRegex.test(emailInput.value)) {
+                    document.getElementById("email-error").textContent = "Please enter a valid email address.";
+                    return false;
+                } else {
+                    document.getElementById("email-error").textContent = "";
+                    return true;
+                }
+            }
+            emailInput.addEventListener("input", validateEmail);
+
+            // Estimated Response Time Logic
+            priorityRadios.forEach((radio) => {
+                radio.addEventListener("change", (event) => {
+                    const priority = event.target.value;
+                    let timeText;
+                    switch (priority) {
+                        case "Low":
+                            timeText = "2-3 business days";
+                            break;
+                        case "Medium":
+                            timeText = "Within 24 hours";
+                            break;
+                        case "High":
+                            timeText = "Within 2 hours";
+                            break;
+                    }
+                    estimatedTime.textContent = `Estimated response time: ${timeText}`;
+                });
+            });
+
+            // Form Submission
+            form.addEventListener("submit", (e) => {
+                e.preventDefault();
+                if (!validateEmail() || nameInput.value === "" || messageInput.value === "") {
+                    alert("Please fill in all required fields correctly.");
+                    return;
+                }
+                const ticketId = `TICKET-${Math.random().toString(36).substr(2, 9).toUpperCase()}`;
+                form.style.display = "none";
+                thankYouMessage.style.display = "block";
+                ticketIdElement.textContent = ticketId;
+            });
+
+            // Accordion Functionality
+            accordions.forEach((accordion) => {
+                accordion.addEventListener("click", () => {
+                    const parentItem = accordion.parentElement;
+                    parentItem.classList.toggle("active");
+                });
+            });
+        });
+    </script>
+</body>
+</html>

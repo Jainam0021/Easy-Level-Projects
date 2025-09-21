@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Become a Volunteer | Sneh Foundation</title>
+    <link rel="stylesheet" href="../static/CSS/volunteer.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <h2>Sneh Foundation</h2>
+            </div>
+            <div class="nav-menu" id="nav-menu">
+                <a href="#" class="nav-link">Home</a>
+                <a href="#" class="nav-link">About</a>
+                <a href="#" class="nav-link">Programs</a>
+                <a href="#" class="nav-link">Volunteer</a>
+                <a href="#" class="nav-link">Donate</a>
+                <a href="#" class="nav-link">Contact</a>
+            </div>
+            <div class="nav-toggle" id="nav-toggle">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-background">
+            <div class="hero-overlay"></div>
+        </div>
+        <div class="hero-content">
+            <h1 class="hero-title">Join Us as a Volunteer</h1>
+            <p class="hero-subtitle">Be a part of spreading love, hope, and compassion</p>
+            <button class="cta-button" onclick="scrollToForm()">
+                <span>Apply Now</span>
+                <i class="fas fa-arrow-down"></i>
+            </button>
+        </div>
+        <div class="scroll-indicator">
+            <div class="scroll-arrow"></div>
+        </div>
+    </section>
+
+    <!-- Why Volunteer Section -->
+    <section class="why-volunteer">
+        <div class="container">
+            <h2 class="section-title">Why Volunteer With Us?</h2>
+            <div class="benefits-grid">
+                <div class="benefit-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="card-icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <h3>Make a Difference</h3>
+                    <p>Be part of life-changing initiatives that directly impact communities and create lasting positive change.</p>
+                </div>
+                <div class="benefit-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="card-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h3>Gain Experience</h3>
+                    <p>Develop leadership skills, teamwork abilities, and real-world experience while making a meaningful contribution.</p>
+                </div>
+                <div class="benefit-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="card-icon">
+                        <i class="fas fa-calendar-check"></i>
+                    </div>
+                    <h3>Impactful Events</h3>
+                    <p>Participate in exciting fundraising events, community programs, and awareness campaigns that bring people together.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Volunteer Form Section -->
+    <section class="volunteer-form-section" id="volunteer-form">
+        <div class="container">
+            <h2 class="section-title">Apply to Become a Volunteer</h2>
+            <div class="form-container">
+                <form class="volunteer-form" id="volunteerForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="fullName">Full Name</label>
+                            <input type="text" id="fullName" name="fullName" required>
+                            <div class="input-focus-line"></div>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" name="email" required>
+                            <div class="input-focus-line"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" name="phone" required>
+                            <div class="input-focus-line"></div>
+                        </div>
+                        <div class="form-group">
+                            <label for="availability">Availability</label>
+                            <select id="availability" name="availability" required>
+                                <option value="">Select your availability</option>
+                                <option value="weekends">Weekends only</option>
+                                <option value="weekdays">Weekdays only</option>
+                                <option value="flexible">Flexible schedule</option>
+                                <option value="evenings">Evenings only</option>
+                                <option value="full-time">Full-time commitment</option>
+                            </select>
+                            <div class="input-focus-line"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="skills">Skills & Interests</label>
+                        <textarea id="skills" name="skills" rows="4" placeholder="Tell us about your skills, interests, and how you'd like to contribute..."></textarea>
+                        <div class="input-focus-line"></div>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn">
+                        <span>Submit Application</span>
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Extra Information Section -->
+    <section class="extra-info">
+        <div class="container">
+            <h2 class="section-title">Other Ways to Support</h2>
+            <div class="support-grid">
+                <div class="support-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="support-icon">
+                        <i class="fas fa-donate"></i>
+                    </div>
+                    <h3>Donate Directly</h3>
+                    <p>Support our mission with a financial contribution that helps us reach more people in need.</p>
+                    <a href="donate.html" class="support-link">Donate Now <i class="fas fa-arrow-right"></i></a>
+                </div>
+                
+                <div class="support-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="support-icon">
+                        <i class="fas fa-share-alt"></i>
+                    </div>
+                    <h3>Share Our Mission</h3>
+                    <p>Help us spread awareness by sharing our cause on social media and with your network.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+                
+                <div class="support-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="support-icon">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <h3>Become a Partner</h3>
+                    <p>Join as a sponsor or corporate partner to create larger impact through collaboration.</p>
+                    <a href="#" class="support-link">Partner With Us <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials">
+        <div class="container">
+            <h2 class="section-title">What Our Volunteers Say</h2>
+            <div class="testimonial-carousel">
+                <div class="testimonial-slide active">
+                    <div class="testimonial-content">
+                        <div class="quote-icon">
+                            <i class="fas fa-quote-left"></i>
+                        </div>
+                        <p>"Volunteering with Sneh Foundation has been one of the most rewarding experiences of my life. The impact we create together is incredible."</p>
+                        <div class="testimonial-author">
+                            <h4>Sarah Johnson</h4>
+                            <span>Education Volunteer</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-slide">
+                    <div class="testimonial-content">
+                        <div class="quote-icon">
+                            <i class="fas fa-quote-left"></i>
+                        </div>
+                        <p>"The sense of community and purpose I've found here is unmatched. Every small action contributes to something bigger."</p>
+                        <div class="testimonial-author">
+                            <h4>Michael Chen</h4>
+                            <span>Health Campaign Volunteer</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-slide">
+                    <div class="testimonial-content">
+                        <div class="quote-icon">
+                            <i class="fas fa-quote-left"></i>
+                        </div>
+                        <p>"I've grown so much as a person while helping others. The skills I've developed here are invaluable."</p>
+                        <div class="testimonial-author">
+                            <h4>Emily Rodriguez</h4>
+                            <span>Event Coordinator</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="testimonial-dots">
+                <span class="dot active" onclick="currentSlide(1)"></span>
+                <span class="dot" onclick="currentSlide(2)"></span>
+                <span class="dot" onclick="currentSlide(3)"></span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call-to-Action Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Every Helping Hand Brings Us Closer to Hope</h2>
+                <p>Join our community of changemakers and be part of something meaningful. Your contribution, no matter how small, makes a world of difference.</p>
+                <button class="cta-button-large" onclick="scrollToForm()">
+                    <span>Become a Volunteer Today</span>
+                    <i class="fas fa-heart"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Sneh Foundation</h3>
+                    <p>Spreading love, hope, and compassion through community service and social impact initiatives.</p>
+                    <div class="footer-social">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Contact Info</h4>
+                    <div class="contact-info">
+                        <p><i class="fas fa-phone"></i> +91 98765 43210</p>
+                        <p><i class="fas fa-envelope"></i> info@snehfoundation.org</p>
+                        <p><i class="fas fa-map-marker-alt"></i> Mumbai, Maharashtra, India</p>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Our Programs</a></li>
+                        <li><a href="#">Volunteer</a></li>
+                        <li><a href="#">Donate</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 Sneh Foundation. All rights reserved. Made with ❤️ for the community.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Floating Button -->
+    <div class="whatsapp-float" onclick="openWhatsApp()">
+        <i class="fab fa-whatsapp"></i>
+        <span class="whatsapp-tooltip">Chat with us!</span>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.min.js"></script>
+    <script src="../static/JS/volunteer.js"></script>
+</body>
+</html>

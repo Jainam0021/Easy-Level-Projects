@@ -1,0 +1,1074 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Sneh Foundation — Donate</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <meta
+      name="csrf-token"
+      content="{{ csrf_token() if csrf_token else '' }}"
+    />
+    <style>
+      :root {
+        --bg1: #f6f9ff;
+        --bg2: #fff5f7;
+        --bg3: #f3fff9;
+        --gradient: radial-gradient(
+            1200px 600px at -10% -10%,
+            #e6f0ff 0%,
+            transparent 60%
+          ),
+          radial-gradient(
+            1000px 500px at 110% -20%,
+            #ffe6ee 0%,
+            transparent 55%
+          ),
+          linear-gradient(135deg, var(--bg1), var(--bg2), var(--bg3));
+        --card: rgba(255, 255, 255, 0.6);
+        --card-strong: rgba(255, 255, 255, 0.9);
+        --blur: 14px;
+        --radius: 16px;
+        --shadow: 0 10px 30px rgba(16, 24, 40, 0.1);
+        --accent: #4a90e2;
+        --accent-2: #ff6b6b;
+        --accent-3: #22c55e;
+        --text: #1f2937;
+        --muted: #6b7280;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        font-family: "Inter", sans-serif;
+        background: var(--gradient);
+        color: var(--text);
+        line-height: 1.6;
+        min-height: 100vh;
+      }
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 24px;
+      }
+      header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 16px;
+        margin-bottom: 20px;
+      }
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+      .logo {
+        width: 48px;
+        height: 48px;
+        border-radius: 12px;
+        background: linear-gradient(135deg, #4a90e2, #7cc3ff);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 700;
+        color: #fff;
+        font-size: 18px;
+        box-shadow: var(--shadow);
+      }
+      h1 {
+        margin: 0;
+        font-size: 22px;
+      }
+      p.lead {
+        margin: 0;
+        color: var(--muted);
+        font-size: 14px;
+      }
+
+      .actions {
+        display: flex;
+        gap: 10px;
+        align-items: center;
+        flex-wrap: wrap;
+      }
+      select.lang {
+        padding: 10px 12px;
+        border-radius: 10px;
+        border: 1px solid #e5e7eb;
+        background: #fff;
+        font-weight: 600;
+      }
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 12px 16px;
+        border: 0;
+        border-radius: 12px;
+        cursor: pointer;
+        font-weight: 700;
+        transition: transform 0.2s, filter 0.2s;
+      }
+      .btn.primary {
+        background: linear-gradient(135deg, #4a90e2, #2563eb);
+        color: #fff;
+      }
+      .btn.ghost {
+        background: rgba(255, 255, 255, 0.6);
+        backdrop-filter: blur(8px);
+        border: 1px solid #e5e7eb;
+        color: #111827;
+      }
+      .btn:hover {
+        transform: translateY(-2px);
+        filter: brightness(1.03);
+      }
+
+      .grid {
+        display: grid;
+        gap: 20px;
+      }
+      @media (min-width: 960px) {
+        .grid {
+          grid-template-columns: 1.35fr 0.9fr;
+        }
+      }
+
+      .card {
+        background: var(--card);
+        backdrop-filter: blur(var(--blur));
+        -webkit-backdrop-filter: blur(var(--blur));
+        border-radius: var(--radius);
+        border: 1px solid rgba(255, 255, 255, 0.5);
+        box-shadow: var(--shadow);
+        padding: 22px;
+        transition: transform 0.25s ease;
+      }
+      .card:hover {
+        transform: translateY(-3px);
+      }
+
+      .hero {
+        display: grid;
+        gap: 16px;
+      }
+      .stats {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 12px;
+      }
+      .stat {
+        background: var(--card-strong);
+        border-radius: 14px;
+        padding: 14px;
+        text-align: center;
+      }
+      .stat .label {
+        color: var(--muted);
+        font-size: 12px;
+      }
+      .stat .value {
+        font-size: 22px;
+        font-weight: 800;
+      }
+
+      form .row {
+        display: flex;
+        gap: 12px;
+        margin-bottom: 12px;
+        flex-wrap: wrap;
+      }
+      form .col {
+        flex: 1 1 220px;
+        display: flex;
+        flex-direction: column;
+      }
+      label {
+        font-size: 13px;
+        color: #374151;
+        margin-bottom: 6px;
+        font-weight: 600;
+      }
+      input,
+      select,
+      textarea {
+        padding: 12px;
+        border-radius: 12px;
+        border: 1px solid #e5e7eb;
+        background: #fff;
+        font-size: 14px;
+      }
+      input:focus,
+      select:focus,
+      textarea:focus {
+        outline: none;
+        border-color: #93c5fd;
+        box-shadow: 0 0 0 3px rgba(147, 197, 253, 0.35);
+      }
+      textarea {
+        min-height: 110px;
+        resize: vertical;
+      }
+      .helper {
+        font-size: 12px;
+        color: var(--muted);
+      }
+
+      .hidden {
+        display: none !important;
+      }
+
+      .progress {
+        background: rgba(255, 255, 255, 0.6);
+        border-radius: 999px;
+        height: 14px;
+        position: relative;
+        overflow: hidden;
+        border: 1px solid #e5e7eb;
+      }
+      .progress .bar {
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        width: 0;
+        background: linear-gradient(90deg, #22c55e, #84e1bc);
+        transition: width 0.6s ease;
+      }
+      .goal {
+        display: flex;
+        justify-content: space-between;
+        font-size: 12px;
+        color: var(--muted);
+        margin-bottom: 6px;
+      }
+
+      .why ul {
+        margin: 0;
+        padding-left: 18px;
+      }
+      footer {
+        text-align: center;
+        color: var(--muted);
+        font-size: 13px;
+        margin-top: 24px;
+      }
+
+      [data-animate] {
+        opacity: 0;
+        transform: translateY(16px);
+        transition: all 0.6s ease;
+      }
+      [data-animate].active {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    </style>
+    <script
+      src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"
+      defer
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js"
+      defer
+    ></script>
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <div class="brand">
+          <div class="logo">SF</div>
+          <div>
+            <h1 data-i18n="title">Sneh Foundation</h1>
+            <p class="lead" data-i18n="subtitle">Compassion in Action</p>
+          </div>
+        </div>
+        <div class="actions">
+          <select id="lang" class="lang" aria-label="Language">
+            <option value="en">English</option>
+            <option value="hi">हिन्दी</option>
+            <option value="gu">ગુજરાતી</option>
+          </select>
+          <a class="btn ghost" href="#form" data-i18n="cta_secondary"
+            >Support Us</a
+          >
+          <a class="btn primary" href="#form" data-i18n="cta_primary"
+            >Donate Now</a
+          >
+        </div>
+      </header>
+
+      <section class="grid">
+        <div class="left">
+          <div class="card hero" data-animate>
+            <h2 data-i18n="hero_head">Your kindness changes lives</h2>
+            <p data-i18n="hero_sub">
+              Donation is not just about money – you can donate clothes, food,
+              books, or even your time to volunteer.
+            </p>
+            <div class="stats">
+              <div class="stat">
+                <div class="label" data-i18n="stat1">Total Donors</div>
+                <div class="value" id="countDonors">0</div>
+              </div>
+              <div class="stat">
+                <div class="label" data-i18n="stat2">Items Donated</div>
+                <div class="value" id="countItems">0</div>
+              </div>
+              <div class="stat">
+                <div class="label" data-i18n="stat3">Volunteer Hours</div>
+                <div class="value" id="countHours">0</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card" data-animate>
+            <h3 style="margin-top:0">How it works (4 simple steps)</h3>
+            <ol style="margin:0 0 0 18px; padding:0; color:#374151">
+              <li>Choose donation type (Money or Items/Volunteering).</li>
+              <li>Fill your contact details and add a short note.</li>
+              <li>If Money → pick UPI/Card; if Items → describe items.</li>
+              <li>Tap Donate. We’ll open your UPI/WhatsApp to coordinate.</li>
+            </ol>
+          </div>
+
+          <div id="form" class="card" data-animate>
+            <h3 data-i18n="form_head">Make a Donation</h3>
+            <form id="donationForm" novalidate>
+              <div class="row">
+                <div class="col">
+                  <label for="fullName" data-i18n="full_name">Full Name</label>
+                  <input
+                    id="fullName"
+                    name="fullName"
+                    required
+                    placeholder="John Doe"
+                  />
+                </div>
+                <div class="col">
+                  <label for="email">Email</label>
+                  <input
+                    id="email"
+                    type="email"
+                    name="email"
+                    placeholder="john@example.com"
+                  />
+                </div>
+              </div>
+              <div class="row">
+                <div class="col">
+                  <label for="phone" data-i18n="phone">Phone Number</label>
+                  <input
+                    id="phone"
+                    name="phone"
+                    inputmode="tel"
+                    pattern="^[0-9+\-\s]{8,15}$"
+                    placeholder="+91XXXXXXXXXX"
+                    required
+                  />
+                  <span class="helper" data-i18n="phone_help"
+                    >Include country code if possible</span
+                  >
+                </div>
+                <div class="col">
+                  <label for="type" data-i18n="don_type">Donation Type</label>
+                  <select id="type" name="type" required>
+                    <option value="" disabled selected data-i18n="choose">
+                      Choose...
+                    </option>
+                    <option value="Money" data-i18n="money">Money</option>
+                    <option value="Clothes" data-i18n="clothes">Clothes</option>
+                    <option value="Books" data-i18n="books">Books</option>
+                    <option value="Food" data-i18n="food">Food</option>
+                    <option value="Volunteering" data-i18n="volunteering">
+                      Volunteering
+                    </option>
+                    <option value="Others" data-i18n="others">Others</option>
+                  </select>
+                </div>
+              </div>
+
+              <div id="moneyFields" class="row hidden">
+                <div class="col">
+                  <label for="amount" data-i18n="amount">Amount (INR)</label>
+                  <input
+                    id="amount"
+                    name="amount"
+                    type="number"
+                    min="1"
+                    step="1"
+                    placeholder="1000"
+                  />
+                </div>
+                <div class="col">
+                  <label for="payment" data-i18n="payment"
+                    >Payment Options</label
+                  >
+                  <select id="payment" name="payment">
+                    <option value="UPI">UPI</option>
+                    <option value="Card">Card</option>
+                    <option value="PayPal">PayPal</option>
+                  </select>
+                </div>
+              </div>
+
+              <div id="upiExtras" class="row hidden">
+                <div class="col">
+                  <label>UPI App</label>
+                  <select id="upiApp">
+                    <option value="any">Any UPI App</option>
+                    <option value="gpay">Google Pay</option>
+                    <option value="phonepe">PhonePe</option>
+                    <option value="paytm">Paytm</option>
+                    <option value="bhim">BHIM</option>
+                  </select>
+                </div>
+                <div class="col">
+                  <label>Pay to UPI ID</label>
+                  <input id="upiId" value="9875147657@fam" readonly />
+                  <span class="helper">Tap Donate to open your UPI app</span>
+                </div>
+              </div>
+
+              <div id="itemFields" class="row hidden">
+                <div class="col" style="flex-basis: 100%">
+                  <label for="details" data-i18n="details"
+                    >Item / Details</label
+                  >
+                  <textarea
+                    id="details"
+                    name="details"
+                    placeholder="e.g., 3 Winter Jackets (Kids, Size M)"
+                  ></textarea>
+                  <span class="helper">Keep it short and clear (quantity, size, condition).</span>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col" style="flex-basis: 100%">
+                  <label for="message" data-i18n="message"
+                    >Message (optional)</label
+                  >
+                  <textarea
+                    id="message"
+                    name="message"
+                    placeholder="Your kind note..."
+                  ></textarea>
+                </div>
+              </div>
+
+              <div class="row" style="align-items: center">
+                <div class="col" style="flex-basis: 100%">
+                  <label
+                    style="
+                      display: flex;
+                      gap: 8px;
+                      align-items: center;
+                      font-weight: 500;
+                    "
+                  >
+                    <input id="consent" type="checkbox" required />
+                    <span data-i18n="consent"
+                      >I agree to be contacted by Sneh Foundation.</span
+                    >
+                  </label>
+                </div>
+              </div>
+
+              <div
+                class="row"
+                style="justify-content: space-between; align-items: center"
+              >
+                <div>
+                  <button class="btn primary" type="submit" id="submitBtn">
+                    <span data-i18n="cta_primary">Donate Now</span>
+                  </button>
+                  <button
+                    class="btn ghost"
+                    type="reset"
+                    id="resetBtn"
+                    data-i18n="reset"
+                  >
+                    Reset
+                  </button>
+                </div>
+                <div class="actions">
+                  <button
+                    class="btn ghost"
+                    type="button"
+                    id="shareBtn"
+                    data-i18n="share"
+                  >
+                    Share
+                  </button>
+                  <button
+                    class="btn ghost"
+                    type="button"
+                    id="receiptBtn"
+                    data-i18n="receipt"
+                  >
+                    Download Receipt
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+
+          <div class="card" data-animate>
+            <div class="goal">
+              <span data-i18n="goal_title"
+                >Collecting 500 books for children</span
+              >
+              <span><span id="goalNow">0</span> / 500</span>
+            </div>
+            <div class="progress" aria-label="Progress">
+              <div class="bar" id="goalBar"></div>
+            </div>
+          </div>
+
+        <div class="card" data-animate>
+          <h3 style="margin-top:0">Recent Donations</h3>
+          <div class="row" style="margin-bottom:8px">
+            <div class="col" style="flex-basis:100%">
+              <input id="donationSearch" placeholder="Search by name, type, phone..." />
+            </div>
+          </div>
+          <div style="overflow:auto">
+            <table style="width:100%; border-collapse:collapse; font-size:14px">
+              <thead style="background:#f3f4f6">
+                <tr>
+                  <th style="text-align:left; padding:10px">Date</th>
+                  <th style="text-align:left; padding:10px">Name</th>
+                  <th style="text-align:left; padding:10px">Type</th>
+                  <th style="text-align:left; padding:10px">Amount/Details</th>
+                  <th style="text-align:left; padding:10px">Phone</th>
+                </tr>
+              </thead>
+              <tbody id="donationsTbody"></tbody>
+              <tbody id="donationsEmpty"><tr><td colspan="5" style="padding:14px; color:#6b7280">No records yet. Your first donation will appear here.</td></tr></tbody>
+            </table>
+          </div>
+        </div>
+        </div>
+
+        <aside class="right">
+          <div class="card why" data-animate>
+            <h3 data-i18n="why_head">Why Donate?</h3>
+            <p data-i18n="why_copy">
+              Sneh Foundation supports education, healthcare, and relief
+              programs. Your contribution directly funds impactful initiatives.
+            </p>
+            <ul>
+              <li data-i18n="why_1">🎓 12 students sponsored</li>
+              <li data-i18n="why_2">🍱 300 meal kits distributed</li>
+              <li data-i18n="why_3">🏥 Health camps in 5 villages</li>
+            </ul>
+          </div>
+          <div class="card" data-animate>
+            <h3 style="margin-top:0">What you can donate</h3>
+            <ul style="margin:0; padding-left:18px">
+              <li>Money (UPI/Card)</li>
+              <li>Clothes, blankets, shoes (good condition)</li>
+              <li>Books, notebooks, stationery</li>
+              <li>Food (non-perishable, sealed)</li>
+              <li>Volunteer time/skills</li>
+            </ul>
+          </div>
+          <div class="card" data-animate>
+            <h3 style="margin-top:0">FAQ</h3>
+            <details><summary>Is my data safe?</summary><p style="margin-top:8px; color:#374151">We only use your details to coordinate your donation.</p></details>
+            <details><summary>Will I get a receipt?</summary><p style="margin-top:8px; color:#374151">Yes, download an acknowledgment after submitting.</p></details>
+          </div>
+          <div class="card" data-animate>
+            <h3 data-i18n="social_head">Spread the word</h3>
+            <div class="actions">
+              <a id="shareFB" class="btn ghost" target="_blank" rel="noopener"
+                >Facebook</a
+              >
+              <a id="shareIG" class="btn ghost" target="_blank" rel="noopener"
+                >Instagram</a
+              >
+              <a id="shareWA" class="btn ghost" target="_blank" rel="noopener"
+                >WhatsApp</a
+              >
+            </div>
+          </div>
+        </aside>
+      </section>
+
+      <footer>
+        © <span id="curYear"></span> Sneh Foundation ·
+        <span data-i18n="footer_note">Thank you for your kindness.</span>
+      </footer>
+    </div>
+
+    <dialog
+      id="thankYou"
+      style="
+        border: 0;
+        border-radius: 16px;
+        padding: 0;
+        max-width: 520px;
+        width: 90%;
+      "
+    >
+      <div class="card" style="margin: 0">
+        <h3 data-i18n="thanks_head">Thank you!</h3>
+        <p data-i18n="thanks_copy">
+          We have received your details. A volunteer will connect with you soon.
+        </p>
+        <div class="actions" style="justify-content: flex-end">
+          <button class="btn primary" id="closeTY" data-i18n="close">
+            Close
+          </button>
+        </div>
+      </div>
+    </dialog>
+
+    <script>
+      // Intersection animations
+      const io = new IntersectionObserver(
+        (es) =>
+          es.forEach(
+            (e) => e.isIntersecting && e.target.classList.add("active")
+          ),
+        { threshold: 0.12 }
+      );
+      document
+        .querySelectorAll("[data-animate]")
+        .forEach((el) => io.observe(el));
+
+      // Counters animation
+      function animateCount(el, to, duration = 1200) {
+        const start = 0;
+        const t0 = performance.now();
+        function frame(t) {
+          const p = Math.min(1, (t - t0) / duration);
+          const val = Math.floor(
+            start + (to - start) * (1 - Math.pow(1 - p, 3))
+          );
+          el.textContent = val.toLocaleString();
+          if (p < 1) requestAnimationFrame(frame);
+        }
+        requestAnimationFrame(frame);
+      }
+      animateCount(document.getElementById("countDonors"), 1250);
+      animateCount(document.getElementById("countItems"), 8420);
+      animateCount(document.getElementById("countHours"), 35600);
+
+      // Progress bar towards 500 books (demo starting at 180)
+      const goalNowEl = document.getElementById("goalNow");
+      const goalBar = document.getElementById("goalBar");
+      let currentBooks = 180;
+      function updateGoal(delta = 0) {
+        currentBooks = Math.max(0, Math.min(500, currentBooks + delta));
+        goalNowEl.textContent = currentBooks;
+        goalBar.style.width = (currentBooks / 500) * 100 + "%";
+      }
+      updateGoal(0);
+
+      // Donation type -> conditional fields
+      const typeEl = document.getElementById("type");
+      const moneyFields = document.getElementById("moneyFields");
+      const itemFields = document.getElementById("itemFields");
+      const paymentEl = document.getElementById("payment");
+      const upiExtras = document.getElementById("upiExtras");
+      function toggleFields() {
+        const v = typeEl.value;
+        moneyFields.classList.toggle("hidden", v !== "Money");
+        itemFields.classList.toggle("hidden", v === "Money" || v === "");
+        if (v === "Money") togglePaymentExtras(); else upiExtras.classList.add('hidden');
+      }
+      typeEl.addEventListener("change", toggleFields);
+      function togglePaymentExtras(){
+        const isUPI = paymentEl.value === 'UPI';
+        upiExtras.classList.toggle('hidden', !isUPI);
+      }
+      paymentEl.addEventListener('change', togglePaymentExtras);
+
+      // Share links
+      const pageUrl = encodeURIComponent(location.href);
+      const shareText = encodeURIComponent("Support Sneh Foundation");
+      document.getElementById(
+        "shareFB"
+      ).href = `https://www.facebook.com/sharer/sharer.php?u=${pageUrl}`;
+      document.getElementById(
+        "shareIG"
+      ).href = `https://www.instagram.com/?url=${pageUrl}`;
+      document.getElementById(
+        "shareWA"
+      ).href = `https://wa.me/?text=${shareText}%20${pageUrl}`;
+      document.getElementById("shareBtn").addEventListener("click", () => {
+        if (navigator.share)
+          navigator.share({
+            title: "Sneh Foundation",
+            text: "Support Sneh Foundation",
+            url: location.href,
+          });
+        else
+          window.open(
+            `https://wa.me/?text=${shareText}%20${pageUrl}`,
+            "_blank"
+          );
+      });
+
+      // Persistence and UPI + WhatsApp integration on submit
+      const form = document.getElementById("donationForm");
+      const dialogTY = document.getElementById("thankYou");
+      const closeTY = document.getElementById("closeTY");
+      const whatsappNumber = "9875147657"; // Change to your official number without +
+      const UPI_NAME = 'Sneh Foundation';
+
+      // Donations persistence
+      const LS_KEY = 'sneh_donations';
+      function loadDonations(){
+        try { return JSON.parse(localStorage.getItem(LS_KEY) || '[]'); } catch(e){ return []; }
+      }
+      function saveDonations(list){ localStorage.setItem(LS_KEY, JSON.stringify(list)); }
+      function renderDonations(filter=''){
+        const tbody = document.getElementById('donationsTbody');
+        const empty = document.getElementById('donationsEmpty');
+        const q = filter.trim().toLowerCase();
+        const rows = loadDonations()
+          .filter(r => !q || (r.name+r.type+(r.amount||'')+(r.details||'')+r.phone).toLowerCase().includes(q))
+          .slice(-100)
+          .reverse();
+        tbody.innerHTML = rows.map(r => {
+          const amtOrDet = r.type === 'Money' ? `₹ ${r.amount}` : (r.details || '—');
+          return `<tr>
+            <td style="padding:10px; border-bottom:1px solid #eef2f7">${r.time}</td>
+            <td style="padding:10px; border-bottom:1px solid #eef2f7">${r.name}</td>
+            <td style="padding:10px; border-bottom:1px solid #eef2f7">${r.type}</td>
+            <td style="padding:10px; border-bottom:1px solid #eef2f7">${amtOrDet}</td>
+            <td style="padding:10px; border-bottom:1px solid #eef2f7">${r.phone}</td>
+          </tr>`;
+        }).join('');
+        empty.style.display = rows.length ? 'none' : '';
+      }
+      renderDonations();
+      document.getElementById('donationSearch').addEventListener('input', (e)=> renderDonations(e.target.value));
+
+      function sanitize(s) {
+        return String(s || "")
+          .replace(/[\n\r]+/g, " ")
+          .trim();
+      }
+
+      form.addEventListener("submit", async (e) => {
+        e.preventDefault();
+
+        // Front-end validation
+        if (!form.reportValidity()) return;
+
+        const fullName = sanitize(document.getElementById("fullName").value);
+        const email = sanitize(document.getElementById("email").value);
+        const phone = sanitize(document.getElementById("phone").value);
+        const type = typeEl.value;
+        const amount = document.getElementById("amount").value;
+        const payment = document.getElementById("payment").value;
+        const details = sanitize(document.getElementById("details").value);
+        const message = sanitize(document.getElementById("message").value);
+        const consent = document.getElementById("consent").checked;
+
+        if (!consent) {
+          alert("Please agree to be contacted.");
+          return;
+        }
+        if (type === "Money" && (!amount || Number(amount) <= 0)) {
+          alert("Please enter a valid amount.");
+          return;
+        }
+        if (type !== "Money" && details.length < 3) {
+          alert("Please add item/details.");
+          return;
+        }
+
+        // Save donation locally
+        const now = new Date();
+        const record = {
+          time: now.toLocaleString(),
+          name: fullName,
+          type,
+          amount: type === 'Money' ? Number(amount) : undefined,
+          details: type !== 'Money' ? details : undefined,
+          phone
+        };
+        const list = loadDonations();
+        list.push(record); saveDonations(list); renderDonations(document.getElementById('donationSearch').value || '');
+
+        // Build WhatsApp message
+        let lines = [
+          "Hi, I would like to donate:",
+          `Name: ${fullName}`,
+          `Type: ${type}`,
+        ];
+        if (type === "Money") {
+          lines.push(`Amount: INR ${amount}`);
+          lines.push(`Payment: ${payment}`);
+        } else {
+          lines.push(`Details: ${details}`);
+        }
+        lines.push(`Phone: ${phone}`);
+        if (email) lines.push(`Email: ${email}`);
+        if (message) lines.push(`Message: ${message}`);
+        const waText = encodeURIComponent(lines.join("\n"));
+        const waUrl = `https://wa.me/${whatsappNumber}?text=${waText}`;
+
+        // Confetti celebration
+        if (window.confetti) {
+          const duration = 1400;
+          const end = Date.now() + duration;
+          (function frame() {
+            window.confetti({
+              particleCount: 3,
+              angle: 60,
+              spread: 55,
+              origin: { x: 0 },
+            });
+            window.confetti({
+              particleCount: 3,
+              angle: 120,
+              spread: 55,
+              origin: { x: 1 },
+            });
+            if (Date.now() < end) requestAnimationFrame(frame);
+          })();
+        }
+
+        // Update demo counters/progress
+        animateCount(
+          document.getElementById("countDonors"),
+          Number(
+            document.getElementById("countDonors").textContent.replace(/,/g, "")
+          ) + 1,
+          800
+        );
+        if (type !== "Money") updateGoal(1);
+
+        // Thank you popup
+        if (dialogTY && !dialogTY.open) dialogTY.showModal();
+
+        // If UPI selected, open specific app with deep link
+        if (type === 'Money' && payment === 'UPI') {
+          const upiId = document.getElementById('upiId').value.trim();
+          const upiApp = document.getElementById('upiApp').value;
+          const baseParams = `pa=${encodeURIComponent(upiId)}&pn=${encodeURIComponent(UPI_NAME)}&am=${encodeURIComponent(amount)}&cu=INR&tn=${encodeURIComponent('Donation - ' + fullName)}`;
+          const upiUrl = `upi://pay?${baseParams}`;
+          const appPackages = { gpay: 'com.google.android.apps.nbu.paisa.user', phonepe: 'com.phonepe.app', paytm: 'net.one97.paytm', bhim: 'in.org.npci.upiapp' };
+          const pkg = appPackages[upiApp];
+          const isAndroid = /Android/i.test(navigator.userAgent);
+          if (isAndroid && pkg) {
+            const intentUrl = `intent://pay?${baseParams}#Intent;scheme=upi;package=${pkg};end`;
+            // Try intent first
+            window.location.href = intentUrl;
+            // Fallback to generic UPI URL after a moment
+            setTimeout(()=>{ window.location.href = upiUrl; }, 800);
+          } else {
+            // Generic UPI, will show chooser
+            window.location.href = upiUrl;
+          }
+        }
+
+        // Redirect to WhatsApp after a short delay (keep communication open)
+        setTimeout(() => { window.open(waUrl, "_blank"); }, 900);
+      });
+      closeTY.addEventListener("click", () => dialogTY.close());
+
+      // Receipt as PDF (basic acknowledgment)
+      document
+        .getElementById("receiptBtn")
+        .addEventListener("click", async () => {
+          const { jsPDF } = window.jspdf || {};
+          if (!jsPDF) {
+            alert("PDF generator not loaded.");
+            return;
+          }
+          const doc = new jsPDF();
+          const name =
+            (document.getElementById("fullName").value || "").trim() || "Donor";
+          const type = typeEl.value || "—";
+          const amount = document.getElementById("amount").value || "—";
+          const details = document.getElementById("details").value || "—";
+          const dt = new Date();
+          doc.setFontSize(18);
+          doc.text("Sneh Foundation - Acknowledgment Receipt", 14, 20);
+          doc.setFontSize(12);
+          doc.text(`Name: ${name}`, 14, 36);
+          doc.text(`Type: ${type}`, 14, 46);
+          doc.text(`Amount (INR): ${amount}`, 14, 56);
+          doc.text(`Details: ${details}`, 14, 66);
+          doc.text(
+            `Date: ${dt.toDateString()} ${dt.toLocaleTimeString()}`,
+            14,
+            76
+          );
+          doc.setFontSize(10);
+          doc.text(
+            "This is a system-generated acknowledgment for your pledge. Thank you!",
+            14,
+            92
+          );
+          doc.save("Sneh-Foundation-Receipt.pdf");
+        });
+
+      // i18n strings
+      const I18N = {
+        en: {
+          title: "Sneh Foundation",
+          subtitle: "Compassion in Action",
+          cta_secondary: "Support Us",
+          cta_primary: "Donate Now",
+          hero_head: "Your kindness changes lives",
+          hero_sub:
+            "Donation is not just about money – you can donate clothes, food, books, or even your time to volunteer.",
+          stat1: "Total Donors",
+          stat2: "Items Donated",
+          stat3: "Volunteer Hours",
+          form_head: "Make a Donation",
+          full_name: "Full Name",
+          phone: "Phone Number",
+          phone_help: "Include country code if possible",
+          don_type: "Donation Type",
+          choose: "Choose...",
+          money: "Money",
+          clothes: "Clothes",
+          books: "Books",
+          food: "Food",
+          volunteering: "Volunteering",
+          others: "Others",
+          amount: "Amount (INR)",
+          payment: "Payment Options",
+          details: "Item / Details",
+          message: "Message (optional)",
+          consent: "I agree to be contacted by Sneh Foundation.",
+          reset: "Reset",
+          share: "Share",
+          receipt: "Download Receipt",
+          why_head: "Why Donate?",
+          why_copy:
+            "Sneh Foundation supports education, healthcare, and relief programs. Your contribution directly funds impactful initiatives.",
+          why_1: "🎓 12 students sponsored",
+          why_2: "🍱 300 meal kits distributed",
+          why_3: "🏥 Health camps in 5 villages",
+          social_head: "Spread the word",
+          goal_title: "Collecting 500 books for children",
+          thanks_head: "Thank you!",
+          thanks_copy:
+            "We have received your details. A volunteer will connect with you soon.",
+          close: "Close",
+          footer_note: "Thank you for your kindness.",
+        },
+        hi: {
+          title: "स्नेह फ़ाउंडेशन",
+          subtitle: "दया से बदलाव",
+          cta_secondary: "हमारा साथ दें",
+          cta_primary: "दान करें",
+          hero_head: "आपकी दया जीवन बदलती है",
+          hero_sub:
+            "दान केवल पैसे का नहीं होता – आप कपड़े, भोजन, पुस्तकें या अपना समय भी दे सकते हैं।",
+          stat1: "कुल दाता",
+          stat2: "दान की गई वस्तुएँ",
+          stat3: "स्वयंसेवी घंटे",
+          form_head: "दान करें",
+          full_name: "पूरा नाम",
+          phone: "फ़ोन नंबर",
+          phone_help: "संभव हो तो देश-कोड शामिल करें",
+          don_type: "दान का प्रकार",
+          choose: "चुनें...",
+          money: "पैसे",
+          clothes: "कपड़े",
+          books: "पुस्तकें",
+          food: "भोजन",
+          volunteering: "स्वयंसेवा",
+          others: "अन्य",
+          amount: "राशि (रु.)",
+          payment: "भुगतान विकल्प",
+          details: "वस्तु / विवरण",
+          message: "संदेश (वैकल्पिक)",
+          consent:
+            "मैं स्नेह फ़ाउंडेशन द्वारा संपर्क किए जाने के लिए सहमत हूँ।",
+          reset: "रीसेट",
+          share: "शेयर",
+          receipt: "रसीद डाउनलोड करें",
+          why_head: "क्यों दान करें?",
+          why_copy:
+            "स्नेह फ़ाउंडेशन शिक्षा, स्वास्थ्य और राहत कार्यक्रमों का समर्थन करता है। आपका योगदान सीधे प्रभाव डालता है।",
+          why_1: "🎓 12 छात्रों को सहायता",
+          why_2: "🍱 300 भोजन किट वितरित",
+          why_3: "🏥 5 गाँवों में स्वास्थ्य शिविर",
+          social_head: "संदेश फैलाएँ",
+          goal_title: "बच्चों के लिए 500 पुस्तकें जुटा रहे हैं",
+          thanks_head: "धन्यवाद!",
+          thanks_copy:
+            "हमें आपके विवरण मिल गए हैं। एक स्वयंसेवक जल्द ही आपसे जुड़ेगा।",
+          close: "बंद करें",
+          footer_note: "आपकी दया के लिए धन्यवाद।",
+        },
+        gu: {
+          title: "સ્નેહ ફાઉન્ડેશન",
+          subtitle: "કાળજીએ બદલાવ",
+          cta_secondary: "અમને સપોર્ટ કરો",
+          cta_primary: "દાન કરો",
+          hero_head: "તમારી દયા જીવન બદલે છે",
+          hero_sub:
+            "દાન માત્ર પૈસાનું નથી – તમે કપડા, ભોજન, પુસ્તકો અથવા તમારો સમય પણ આપી શકો છો.",
+          stat1: "કુલ દાતાઓ",
+          stat2: "દાન કરેલી વસ્તુઓ",
+          stat3: "સેવાકીય કલાકો",
+          form_head: "દાન કરો",
+          full_name: "પૂરું નામ",
+          phone: "ફોન નંબર",
+          phone_help: "શક્ય હોય તો દેશ કોડ ઉમેરો",
+          don_type: "દાન પ્રકાર",
+          choose: "પસંદ કરો...",
+          money: "પૈસા",
+          clothes: "કપડાં",
+          books: "પુસ્તકો",
+          food: "ખોરાક",
+          volunteering: "સ્વયંસેવા",
+          others: "અન્ય",
+          amount: "રકમ (રૂ.)",
+          payment: "ચુકવણી વિકલ્પો",
+          details: "વસ્તુ / વિગતો",
+          message: "સંદેશ (વૈકલ્પિક)",
+          consent: "હું સ્નેહ ફાઉન્ડેશન દ્વારા સંપર્ક કરવા માટે સંમત છું.",
+          reset: "રીસેટ",
+          share: "શેર",
+          receipt: "રસીદ ડાઉનલોડ કરો",
+          why_head: "દાન કેમ કરવું?",
+          why_copy:
+            "સ્નેહ ફાઉન્ડેશન શિક્ષણ, આરોગ્ય અને રાહત કાર્યક્રમોને સમર્થન આપે છે. તમારું યોગદાન સીધી અસર કરે છે.",
+          why_1: "🎓 12 વિદ્યાર્થીઓને સહાય",
+          why_2: "🍱 300 ભોજન કિટ વિતરણ",
+          why_3: "🏥 5 ગામોમાં આરોગ્ય કેમ્પ",
+          social_head: "સંદેશ ફેલાવો",
+          goal_title: "બાળકો માટે 500 પુસ્તકો એકત્ર કરી રહ્યા છીએ",
+          thanks_head: "આભાર!",
+          thanks_copy:
+            "અમને તમારી વિગતો મળી ગઈ છે. ટૂંક સમયમાં સ્વયંસેવક સંપર્ક કરશે.",
+          close: "બંધ કરો",
+          footer_note: "તમારી દયા માટે આભાર.",
+        },
+      };
+      function setLang(l) {
+        const dict = I18N[l] || I18N.en;
+        document.querySelectorAll("[data-i18n]").forEach((el) => {
+          const k = el.getAttribute("data-i18n");
+          if (dict[k]) el.textContent = dict[k];
+        });
+        document.documentElement.lang = l;
+      }
+      const langSel = document.getElementById("lang");
+      langSel.addEventListener("change", () => setLang(langSel.value));
+      setLang("en");
+
+      // Footer year
+      document.getElementById("curYear").textContent = new Date().getFullYear();
+    </script>
+  </body>
+</html>

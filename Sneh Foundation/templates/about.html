@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About Us - Sneh Foundation</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        font-family: "Poppins", sans-serif;
+        color: #333;
+        line-height: 1.8;
+        background: #faf9f7;
+      }
+      section {
+        padding: 5rem 10%;
+      }
+      h1,
+      h2 {
+        font-weight: 700;
+        margin-bottom: 1.5rem;
+        position: relative;
+      }
+      h1 {
+        font-size: 3rem;
+        text-align: center;
+        color: #e74c3c;
+      }
+      h2 {
+        font-size: 2rem;
+        color: #2c3e50;
+      }
+      p {
+        margin-bottom: 1rem;
+        color: #555;
+      }
+
+      /* Hero Section */
+      .hero {
+        background: linear-gradient(135deg, #fff, #fdf5ef);
+        text-align: center;
+        padding: 6rem 10% 4rem;
+      }
+      .hero h1 {
+        font-size: 3.2rem;
+      }
+      .hero p {
+        max-width: 700px;
+        margin: 1.5rem auto;
+        font-size: 1.1rem;
+      }
+
+      /* Values */
+      .values ul {
+        list-style: none;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1.5rem;
+      }
+      .values li {
+        background: #fff;
+        padding: 1.2rem 2rem;
+        border-radius: 12px;
+        flex: 1 1 200px;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.05);
+        text-align: center;
+        transition: transform 0.3s ease;
+      }
+      .values li:hover {
+        transform: translateY(-8px);
+      }
+
+      /* Impact Section */
+      .impact-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 2rem;
+        margin-top: 2rem;
+      }
+      .impact-card {
+        background: #fff;
+        padding: 2rem;
+        border-radius: 16px;
+        text-align: center;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+        transition: transform 0.3s ease;
+      }
+      .impact-card:hover {
+        transform: translateY(-10px);
+      }
+      .impact-card h3 {
+        color: #e67e22;
+        margin-bottom: 0.5rem;
+      }
+
+      /* FAQ */
+      details {
+        margin: 1rem 0;
+        padding: 1rem 1.5rem;
+        background: #fff;
+        border-radius: 10px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        transition: all 0.3s ease;
+      }
+      summary {
+        font-weight: 600;
+        cursor: pointer;
+        color: #2c3e50;
+      }
+
+      /* Team */
+      .team-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 2rem;
+        margin-top: 3rem;
+      }
+      .team-card {
+        background: #fff;
+        border-radius: 16px;
+        padding: 2rem;
+        text-align: center;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+        transition: transform 0.3s ease;
+      }
+      .team-card:hover {
+        transform: translateY(-10px);
+      }
+      .team-card img {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        object-fit: cover;
+        margin-bottom: 1rem;
+      }
+      .team-card h3 {
+        color: #e67e22;
+      }
+
+      /* Contact */
+      .contact {
+        background: linear-gradient(135deg, #fdf5ef, #fff);
+        text-align: center;
+        border-radius: 20px;
+        padding: 3rem;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+      }
+      .contact p {
+        font-size: 1.1rem;
+      }
+
+      /* Animations */
+      [data-animate] {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: all 0.8s ease;
+      }
+      [data-animate].visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Hero -->
+    <section class="hero" data-animate>
+      <h1>About Sneh Foundation</h1>
+      <p>
+        Sneh Foundation is a non-profit organization dedicated to uplifting
+        underprivileged communities by providing access to education,
+        healthcare, food, and shelter. We empower people through sustainable
+        development and compassionate community programs.
+      </p>
+    </section>
+
+    <!-- Mission & Vision -->
+    <section data-animate>
+      <h2>Our Mission</h2>
+      <p>
+        To bring hope, dignity, and opportunities to vulnerable populations
+        through impactful programs and dedicated service.
+      </p>
+      <h2>Our Vision</h2>
+      <p>
+        A world where every individual lives with dignity, has access to
+        essential resources, and can pursue their dreams without barriers.
+      </p>
+    </section>
+
+    <!-- Values -->
+    <section class="values" data-animate>
+      <h2>Core Values</h2>
+      <ul>
+        <li>💖 Empathy & Compassion</li>
+        <li>📢 Transparency & Accountability</li>
+        <li>⚖️ Equality & Inclusion</li>
+        <li>🌱 Sustainability & Growth</li>
+      </ul>
+    </section>
+
+    <!-- Impact -->
+    <section data-animate>
+      <h2>Our Impact (2020 - 2025)</h2>
+      <div class="impact-grid">
+        <div class="impact-card">
+          <h3>Education Drives</h3>
+          <p>15,000+ beneficiaries across 25 locations</p>
+        </div>
+        <div class="impact-card">
+          <h3>Food Distribution</h3>
+          <p>40,000+ beneficiaries across 30 locations</p>
+        </div>
+        <div class="impact-card">
+          <h3>Healthcare Camps</h3>
+          <p>12,500+ beneficiaries across 18 locations</p>
+        </div>
+        <div class="impact-card">
+          <h3>Women Empowerment</h3>
+          <p>5,000+ beneficiaries across 20 locations</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section data-animate>
+      <h2>Frequently Asked Questions</h2>
+      <details>
+        <summary>How can I volunteer?</summary>
+        <p>
+          Visit our Volunteer page and fill out the form. Our team will connect
+          with you.
+        </p>
+      </details>
+      <details>
+        <summary>How is my donation used?</summary>
+        <p>
+          All donations directly fund our programs. Financial reports are
+          published regularly.
+        </p>
+      </details>
+      <details>
+        <summary>Can I visit your centers?</summary>
+        <p>
+          Yes, you’re welcome to visit our project sites. Contact us to schedule
+          a visit.
+        </p>
+      </details>
+    </section>
+
+    <!-- Team -->
+    <section data-animate>
+      <h2>Meet Our Team</h2>
+      <div class="team-grid">
+        <div class="team-card">
+          <img src="../static/images/Logo.png" alt="Member" />
+          <h3>Jainam Panchal</h3>
+          <p>Founder & Director</p>
+        </div>
+        <div class="team-card">
+          <img src="../static/images/Logo.png" alt="Member" />
+          <h3>Ananya Sharma</h3>
+          <p>Program Manager</p>
+        </div>
+        <div class="team-card">
+          <img src="../static/images/Logo.png" alt="Member" />
+          <h3>Rahul Mehta</h3>
+          <p>Healthcare Lead</p>
+        </div>
+        <div class="team-card">
+          <img src="../static/images/Logo.png" alt="Member" />
+          <h3>Pooja Patel</h3>
+          <p>Community Coordinator</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="contact" data-animate>
+      <h2>Contact Us</h2>
+      <p>📧 Email: jainampanchal89@gmail.com</p>
+      <p>📞 Phone: +91-9875147657</p>
+      <p>📍 Address: 123, Humanity Road, New Ranip, India</p>
+    </section>
+
+    <script>
+      const elements = document.querySelectorAll("[data-animate]");
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("visible");
+              observer.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.2 }
+      );
+
+      elements.forEach((el) => observer.observe(el));
+    </script>
+  </body>
+</html>
